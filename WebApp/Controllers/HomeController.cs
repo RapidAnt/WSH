@@ -1,30 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Reflection;
 using System.Web.Mvc;
+using System.Web.Security;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login");
+            }
+
+            //return View();
+            return RedirectToAction("CurrentRates");
         }
 
-        public ActionResult About()
+        [AllowAnonymous]
+        public ActionResult Register()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View("Register");
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Register(RegisterViewModel model)
         {
-            ViewBag.Message = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                // Registration
+            }
 
-            return View();
+            return View("Register");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid && model.Email == "Email" && model.Password == "Password")
+            {
+                FormsAuthentication.SetAuthCookie(model.Email, false);
+                return RedirectToAction("Index");
+            }
+
+            return View("Login");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CurrentRates()
+        {
+            return View("CurrentRates");
         }
     }
 }
