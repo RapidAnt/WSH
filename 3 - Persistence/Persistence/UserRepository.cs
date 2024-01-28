@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography.X509Certificates;
 using Data_Layer;
 
 namespace Persistence
 {
-    public class UserRepository
+    public class UserRepository : RepositoryBase<User>
     {
-        protected readonly AppDbContext _context;
-
-        public UserRepository(AppDbContext context)
+        public UserRepository(AppDbContext context):base(context)
         {
-            _context = context;
         }
 
-        public List<User> GetAll()
+        public User GetUserByEmailAndPassword(string email, string password)
         {
-            return _context.Users.ToList();
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
         }
     }
 }

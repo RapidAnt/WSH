@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Runtime.InteropServices;
+using System.Web.Mvc;
+using System.Web.Security;
+using Application;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
@@ -6,6 +9,9 @@ namespace WebApp.Controllers
     [Authorize]
     public class RegisterController : Controller
     {
+        private RegistrationService _registrationService = new RegistrationService();
+        private LoginService _loginService = new LoginService();
+
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -16,12 +22,18 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid || 
+                _loginService.GetUserByEmail(model.Email) != null ||
+                model.Password != model.PasswordRepeated)
             {
-                // Registration
+                return View("Register");
             }
 
-            return View("Register");
+            var hash = _registrationService.GenerateHash(model.Password);
+
+            _registrationService.RegisterUser(model.UserName, model.Email, hash);
+
+            return RedirectToAction("Login", "Login");
         }
     }
 }

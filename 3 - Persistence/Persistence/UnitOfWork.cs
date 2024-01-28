@@ -12,5 +12,10 @@ namespace Persistence
             _context = context;
             Users = new UserRepository(_context);
         }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }

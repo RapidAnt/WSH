@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Data_Layer;
 using Persistence;
 
@@ -8,6 +9,7 @@ namespace Application
     public class LoginService
     {
         private readonly UnitOfWork _unitOfWork;
+        private RegistrationService _registrationService = new RegistrationService();
 
         public LoginService()
         {
@@ -22,14 +24,26 @@ namespace Application
 
         public bool CanLogIn(string email, string password)
         {
-            bool userFound = GetAllUser().Any(u => u.Email == email && u.Password == password);
+            string hash = _registrationService.GenerateHash(password);
+
+            bool userFound = GetAllUser().Any(u => u.Email == email && u.Password == hash);
 
             return userFound;
         }
 
-        public User GetUser(string email, string password)
+        public User GetUserByEmail(string email)
         {
-            User user = GetAllUser().FirstOrDefault(u => u.Email == email && u.Password == password);
+            User user = GetAllUser().FirstOrDefault(u => u.Email == email);
+
+            return user;
+        }
+
+        public User GetUserByEmailAndPassword(string email, string password)
+        {
+            string hash = _registrationService.GenerateHash(password);
+
+            User user = GetAllUser().FirstOrDefault(u => u.Email == email && u.Password == hash);
+            User user2 = _unitOfWork.Users.GetUserByEmailAndPassword(email, hash);
 
             return user;
         }

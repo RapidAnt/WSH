@@ -21,12 +21,15 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel model)
         {
-            if (ModelState.IsValid && _loginService.CanLogIn(model.Email, model.Password))
+            if (ModelState.IsValid)
             {
-                User user = _loginService.GetUser(model.Email, model.Password);
-                FormsAuthentication.SetAuthCookie(user.UserName, false);
+                if (_loginService.CanLogIn(model.Email, model.Password))
+                {
+                    User user = _loginService.GetUserByEmailAndPassword(model.Email, model.Password);
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             return View("Login");
