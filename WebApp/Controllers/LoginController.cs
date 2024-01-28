@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using Application;
+using Data_Layer;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
@@ -7,6 +9,8 @@ namespace WebApp.Controllers
     [Authorize]
     public class LoginController : Controller
     {
+        private LoginService _loginService = new LoginService();
+
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -17,10 +21,12 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel model)
         {
-            if (ModelState.IsValid && model.Email == "Email" && model.Password == "Password")
+            if (ModelState.IsValid && _loginService.CanLogIn(model.Email, model.Password))
             {
-                FormsAuthentication.SetAuthCookie(model.Email, false);
-                return RedirectToAction("Index","Home");
+                User user = _loginService.GetUser(model.Email, model.Password);
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+
+                return RedirectToAction("Index", "Home");
             }
 
             return View("Login");

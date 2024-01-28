@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Persistence", "3 - Pers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Data Layer", "4 - Data Layer", "{09C5A391-1075-4942-B5A6-C43414FA5E89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Layer", "4 - Data Layer\Data Layer\Data Layer.csproj", "{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "2 - Application\Application\Application.csproj", "{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "3 - Persistence\Persistence\Persistence.csproj", "{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +29,27 @@ Global
 		{78575C86-4F8A-4861-BB16-51B4E875668A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78575C86-4F8A-4861-BB16-51B4E875668A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78575C86-4F8A-4861-BB16-51B4E875668A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{78575C86-4F8A-4861-BB16-51B4E875668A} = {E03C5C78-C603-4862-8044-E118AFE2328F}
+		{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87} = {09C5A391-1075-4942-B5A6-C43414FA5E89}
+		{A42CF0C3-FF76-4FB9-9391-AB2B379C48FF} = {521D47F1-0AE4-4288-963C-228B05CDC243}
+		{B8B7E1B7-52F9-4F8B-BF48-DBFA12448491} = {205EA833-4527-4FE7-995A-EA002AD666CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E284A42-34FC-440F-B7E6-07A2C1862080}
