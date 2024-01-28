@@ -52,10 +52,12 @@
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IMnbArfolyamService.cs" />
     <Compile Include="Interfaces\IRegistrationService.cs" />
+    <Compile Include="Interfaces\IUserRatesService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="MnbArfolyamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationService.cs" />
+    <Compile Include="UserRatesService.cs" />
     <Compile Include="XmlConcerterService.cs" />
   </ItemGroup>
   <ItemGroup>

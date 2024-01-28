@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Linq;
 using Data_Layer;
 
 namespace Persistence

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Data_Layer
+﻿namespace Data_Layer
 {
     public class User
     {

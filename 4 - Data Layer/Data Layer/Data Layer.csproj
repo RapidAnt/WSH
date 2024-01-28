@@ -68,7 +68,12 @@
     <Compile Include="Migrations\202401280337590_AddUserModel.designer.cs">
       <DependentUpon>202401280337590_AddUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401282115188_AddedUserRates.cs" />
+    <Compile Include="Migrations\202401282115188_AddedUserRates.designer.cs">
+      <DependentUpon>202401282115188_AddedUserRates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\UserRate.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202401280337590_AddUserModel.resx">
       <DependentUpon>202401280337590_AddUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401282115188_AddedUserRates.resx">
+      <DependentUpon>202401282115188_AddedUserRates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

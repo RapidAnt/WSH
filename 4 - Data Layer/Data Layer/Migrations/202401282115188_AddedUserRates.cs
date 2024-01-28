@@ -2,18 +2,20 @@
 
 namespace Data_Layer.Migrations
 {
-    public partial class AddUserModel : DbMigration
+    public partial class AddedUserRates : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Users",
+                "dbo.UserRates",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserName = c.String(),
-                        Email = c.String(),
-                        Password = c.String(),
+                        UserId = c.Int(nullable: false),
+                        Date = c.String(),
+                        Unit = c.String(),
+                        Currency = c.String(),
+                        CurrentRate = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -21,7 +23,7 @@ namespace Data_Layer.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Users");
+            DropTable("dbo.UserRates");
         }
     }
 }

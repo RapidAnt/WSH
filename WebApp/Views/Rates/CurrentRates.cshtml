@@ -1,9 +1,55 @@
 ﻿@model WebApp.ViewModels.Rates.RatesViewModel
+
+
+<script>
+        var page_urls = {
+            SaveRate: "@Url.Action("SaveRate", "Rates")"
+        };
+</script>
+@Scripts.Render("~/content_evaluations_js")
+
 <main>
     <section class="row">
         <h1>Current Rates</h1>
     </section>
-    <section class="row">
-        The following current rates are available on: @Model.Date
+    <section class="row justify-content-center">
+        <div class="card  col-sm-8">
+            <div class="card-body">
+                The current rates are the followings on @Model.Date :<p>
+                    <table id="currencyTable" class="table table-striped table-hover table-bordered text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Currency</th>
+                                <th scope="col">Unit</th>
+                                <th scope="col">Rate</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var rate in Model.Rates)
+                                {
+                                    <tr>
+                                        <td>@rate.Curr</td>
+                                        <td>@rate.Unit</td>
+                                        <td>@rate.CurrentRate</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" id="save-currency"
+                                                    data-date="@Model.Date"
+                                                    data-currency="@rate.Curr"
+                                                    data-unit="@rate.Unit"
+                                                    data-currentrate="@rate.CurrentRate">
+                                                Save
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+            </div>
+        </div>
     </section>
 </main>
+
+@Scripts.Render("~/content_rates_js")

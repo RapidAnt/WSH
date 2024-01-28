@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UserRateRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

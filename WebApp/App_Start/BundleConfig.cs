@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Data.Entity.Infrastructure;
+using System.Web;
 using System.Web.Optimization;
 
 namespace WebApp
@@ -9,7 +10,8 @@ namespace WebApp
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                    "~/Scripts/jquery-{version}.js",
+                    "~/Scripts/jquery.dataTables.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -24,7 +26,12 @@ namespace WebApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/dataTables.bootstrap.min.css"));
+            
+
+            bundles.Add(new ScriptBundle("~/content_rates_js").Include(
+                "~/Content/Rates/js/rates.js"));
         }
     }
 }

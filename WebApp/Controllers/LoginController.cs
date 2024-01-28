@@ -26,7 +26,8 @@ namespace WebApp.Controllers
                 if (_loginService.CanLogIn(model.Email, model.Password))
                 {
                     User user = _loginService.GetUserByEmailAndPassword(model.Email, model.Password);
-                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    System.Web.HttpContext.Current.Session["UserName"] = user.UserName;
 
                     return RedirectToAction("Index", "Home");
                 }
