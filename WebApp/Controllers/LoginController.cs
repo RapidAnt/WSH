@@ -9,7 +9,7 @@ namespace WebApp.Controllers
     [Authorize]
     public class LoginController : Controller
     {
-        private LoginService _loginService = new LoginService();
+        private ILoginService _loginService = new LoginService();
 
         [AllowAnonymous]
         public ActionResult Login()

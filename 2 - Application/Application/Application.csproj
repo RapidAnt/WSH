@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,9 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\MNBArfolyamServiceSoapClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IConverter.cs" />
+    <Compile Include="Interfaces\ILoginService.cs" />
+    <Compile Include="Interfaces\IMnbArfolyamService.cs" />
+    <Compile Include="Interfaces\IRegistrationService.cs" />
     <Compile Include="LoginService.cs" />
+    <Compile Include="MnbArfolyamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationService.cs" />
+    <Compile Include="XmlConcerterService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\3 - Persistence\Persistence\Persistence.csproj">
@@ -54,6 +67,74 @@
       <Project>{F16B9745-B77B-49CD-9F86-4D5D1A0EFF87}</Project>
       <Name>Data Layer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrenciesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrencyUnitsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrencyUnitsResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrentExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetCurrentExchangeRatesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetDateIntervalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetDateIntervalResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetExchangeRatesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Application.MNBArfolyamServiceSoapClient.GetInfoResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\arfolyamok.wsdl" />
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\arfolyamok.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\arfolyamok1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\MNBArfolyamServiceSoapImpl.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MNBArfolyamServiceSoapClient\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\arfolyamok.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MNBArfolyamServiceSoapClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

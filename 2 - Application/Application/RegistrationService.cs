@@ -7,7 +7,7 @@ using Persistence;
 
 namespace Application
 {
-    public class RegistrationService
+    public class RegistrationService : IRegistrationService
     {
         private readonly UnitOfWork _unitOfWork;
 

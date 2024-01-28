@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Data_Layer;
 using Persistence;
 
 namespace Application
 {
-    public class LoginService
+    public class LoginService : ILoginService
     {
         private readonly UnitOfWork _unitOfWork;
         private RegistrationService _registrationService = new RegistrationService();

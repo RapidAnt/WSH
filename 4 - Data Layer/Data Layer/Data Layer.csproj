@@ -53,6 +53,17 @@
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
     <Compile Include="CustomDbInitializer.cs" />
+    <Compile Include="DTO_Models\Currency.cs" />
+    <Compile Include="DTO_Models\DateInterval.cs" />
+    <Compile Include="DTO_Models\Day.cs" />
+    <Compile Include="DTO_Models\MnbCurrencies.cs" />
+    <Compile Include="DTO_Models\MnbCurrencyUnits.cs" />
+    <Compile Include="DTO_Models\MnbCurrentExchangeRates.cs" />
+    <Compile Include="DTO_Models\MnbExchangeRates.cs" />
+    <Compile Include="DTO_Models\MnbExchangeRatesQueryValues.cs" />
+    <Compile Include="DTO_Models\MnbStoredInterval.cs" />
+    <Compile Include="DTO_Models\Rate.cs" />
+    <Compile Include="DTO_Models\UnitElement.cs" />
     <Compile Include="Migrations\202401280337590_AddUserModel.cs" />
     <Compile Include="Migrations\202401280337590_AddUserModel.designer.cs">
       <DependentUpon>202401280337590_AddUserModel.cs</DependentUpon>
@@ -70,6 +81,7 @@
       <DependentUpon>202401280337590_AddUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

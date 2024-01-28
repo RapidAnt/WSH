@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Web.Mvc;
-using System.Web.Security;
+﻿using System.Web.Mvc;
 using Application;
 using WebApp.ViewModels;
 
@@ -9,8 +7,8 @@ namespace WebApp.Controllers
     [Authorize]
     public class RegisterController : Controller
     {
-        private RegistrationService _registrationService = new RegistrationService();
-        private LoginService _loginService = new LoginService();
+        private IRegistrationService _registrationService = new RegistrationService();
+        private ILoginService _loginService = new LoginService();
 
         [AllowAnonymous]
         public ActionResult Register()
