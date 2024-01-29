@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Data_Layer;
 
 namespace Persistence
@@ -21,6 +23,11 @@ namespace Persistence
         public void Add(T item)
         {
             _context.Set<T>().Add(item);
+        }
+
+        public List<T> Find(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().Where(predicate).ToList() ?? new List<T>();
         }
     }
 }

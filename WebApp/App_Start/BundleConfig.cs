@@ -31,7 +31,7 @@ namespace WebApp
             
 
             bundles.Add(new ScriptBundle("~/content_rates_js").Include(
-                "~/Content/Rates/js/rates.js"));
+                "~/Content/CurrentRates/js/rates.js"));
         }
     }
 }

@@ -3,7 +3,7 @@
 
 <script>
         var page_urls = {
-            SaveRate: "@Url.Action("SaveRate", "Rates")"
+            SaveRate: "@Url.Action("SaveRate", "CurrentRates")"
         };
 </script>
 @Scripts.Render("~/content_evaluations_js")
@@ -22,8 +22,8 @@
                                 <th scope="col">Currency</th>
                                 <th scope="col">Unit</th>
                                 <th scope="col">Rate</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
+                                <th scope="col">Save Comment</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>

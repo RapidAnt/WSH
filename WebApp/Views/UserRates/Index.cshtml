@@ -1,0 +1,41 @@
+﻿@model WebApp.ViewModels.UserRates.UserRatesViewModel
+
+<main>
+    <section class="row">
+        <h1>Saved User Rates</h1>
+    </section>
+    <section class="row justify-content-center">
+        <div class="card  col-sm-8">
+            <div class="card-body">
+                The following rates was saved by the user:
+                <table id="currencyTable" class="table table-striped table-hover table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Currency</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Save Comment</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var rate in Model.UserRates)
+                            {
+                                <tr>
+                                    <td>@rate.Date</td>
+                                    <td>@rate.Currency</td>
+                                    <td>@rate.Unit</td>
+                                    <td>@rate.CurrentRate</td>
+                                    <td>@rate.Comment</td>
+                                    <td>Delete | Update</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>

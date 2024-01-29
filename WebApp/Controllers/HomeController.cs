@@ -13,8 +13,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Login","Login");
             }
 
-            //return View();
-            return RedirectToAction("CurrentRates","Rates");
+            return RedirectToAction("Index","CurrentRates");
         }
 
 

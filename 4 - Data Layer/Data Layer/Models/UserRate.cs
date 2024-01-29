@@ -14,6 +14,8 @@ namespace Data_Layer.Models
         [MaxLength(100)]
         public string Comment { get; set; }
 
+        public UserRate() { }
+
         public UserRate(int userId, DateTime date, string unit, string currency, string currentRate, string comment)
         {
             UserId = userId;

@@ -22,7 +22,8 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="navbar-text">Welcome @HttpContext.Current.Session["UserName"] | </li>
-                        <li>@Html.ActionLink("Current Rates", "CurrentRates", "Rates", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Current Rates", "Index", "CurrentRates", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Saved Rates", "Index", "UserRates", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                     else

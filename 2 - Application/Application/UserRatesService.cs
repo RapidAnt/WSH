@@ -1,4 +1,6 @@
-﻿using Application.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Application.Interfaces;
 using Data_Layer;
 using Data_Layer.Models;
 using Persistence;
@@ -24,6 +26,11 @@ namespace Application
         {
             _unitOfWork.UserRates.Add(userRate);
             _unitOfWork.Save();
+        }
+
+        public List<UserRate> GetRelatedUserRates(int userId)
+        {
+            return _unitOfWork.UserRates.Find(userRate => userRate.UserId == userId);
         }
     }
 }
