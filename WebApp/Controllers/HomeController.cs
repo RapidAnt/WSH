@@ -15,7 +15,5 @@ namespace WebApp.Controllers
 
             return RedirectToAction("Index","CurrentRates");
         }
-
-
     }
 }

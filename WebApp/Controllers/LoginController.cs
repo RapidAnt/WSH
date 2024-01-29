@@ -14,7 +14,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            return View("Login");
+            return View("Index");
         }
 
         [HttpPost]
@@ -33,7 +33,7 @@ namespace WebApp.Controllers
                 }
             }
 
-            return View("Login");
+            return View("Index");
         }
 
         public ActionResult Logout()

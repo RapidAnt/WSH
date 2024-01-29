@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View("Register");
+            return View("Index");
         }
 
         [HttpPost]
@@ -24,7 +24,7 @@ namespace WebApp.Controllers
                 _loginService.GetUserByEmail(model.Email) != null ||
                 model.Password != model.PasswordRepeated)
             {
-                return View("Register");
+                return View("Index");
             }
 
             var hash = _registrationService.GenerateHash(model.Password);

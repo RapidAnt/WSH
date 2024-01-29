@@ -20,7 +20,7 @@ namespace WebApp.Controllers
             var currentExchangeRates = _mnbArfolyamService.GetCurrentExchangeRates();
             RatesViewModel viewModel = new RatesViewModel(currentExchangeRates);
 
-            return View("CurrentRates", viewModel);
+            return View("Index", viewModel);
         }
 
         [HttpPost]
