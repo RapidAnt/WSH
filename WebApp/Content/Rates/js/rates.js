@@ -16,10 +16,10 @@ function saveRateshandler() {
         element.prop('disabled', true);
 
         var ajaxObj = {
-            Date: $(this).data('date'),
             Currency: $(this).data('currency'),
             Unit: $(this).data('unit'),
-            CurrentRate: $(this).data('currentrate')
+            CurrentRate: $(this).data('currentrate'),
+            Comment: element.closest("tr").find("#comment").val()
         };
 
         $.post(page_urls.SaveRate, ajaxObj,

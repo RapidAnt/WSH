@@ -23,6 +23,7 @@
                                 <th scope="col">Unit</th>
                                 <th scope="col">Rate</th>
                                 <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,9 +34,9 @@
                                         <td>@rate.Curr</td>
                                         <td>@rate.Unit</td>
                                         <td>@rate.CurrentRate</td>
+                                        <td><input type="text" id="comment"></td>
                                         <td>
                                             <button type="button" class="btn btn-primary" id="save-currency"
-                                                    data-date="@Model.Date"
                                                     data-currency="@rate.Curr"
                                                     data-unit="@rate.Unit"
                                                     data-currentrate="@rate.CurrentRate">

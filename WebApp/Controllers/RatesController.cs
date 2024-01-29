@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Application;
 using Application.Interfaces;
 using Data_Layer.Models;
@@ -26,7 +27,7 @@ namespace WebApp.Controllers
         {
             int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
 
-            UserRate userRate = new UserRate(userId, rate.Date, rate.Unit, rate.Currency, rate.CurrentRate);
+            UserRate userRate = new UserRate(userId, DateTime.Now, rate.Unit, rate.Currency, rate.CurrentRate, rate.Comment);
 
             _userRatesService.SaveUserRate(userRate);
 

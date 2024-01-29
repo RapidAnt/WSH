@@ -72,6 +72,10 @@
     <Compile Include="Migrations\202401282115188_AddedUserRates.designer.cs">
       <DependentUpon>202401282115188_AddedUserRates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401291857312_DateTime_And_Comment.cs" />
+    <Compile Include="Migrations\202401291857312_DateTime_And_Comment.designer.cs">
+      <DependentUpon>202401291857312_DateTime_And_Comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserRate.cs" />
     <Compile Include="Models\User.cs" />
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202401282115188_AddedUserRates.resx">
       <DependentUpon>202401282115188_AddedUserRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401291857312_DateTime_And_Comment.resx">
+      <DependentUpon>202401291857312_DateTime_And_Comment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
