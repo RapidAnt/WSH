@@ -5,13 +5,7 @@
 
     var result = 0;
 
-    console.log("-- INPUTS--");
-    console.log(forint);
-    console.log(rate);
-    console.log(unit);
-
     if (rate != 0) {
-        console.log("-- CALC --");
         result = forint / rate * unit;
         console.log(result);
     }
