@@ -34,6 +34,9 @@ namespace WebApp
 
             bundles.Add(new ScriptBundle("~/user_rates_js").Include(
                 "~/Scripts/UserRates/js/UserRates.js"));
+
+            bundles.Add(new ScriptBundle("~/calculator_js").Include(
+                "~/Scripts/Calculator/js/Calculator.js"));
         }
     }
 }

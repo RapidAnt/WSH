@@ -146,6 +146,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\CurrentRatesController.cs" />
@@ -155,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Calculator\CalculatorViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\CurrentRates\RatesViewModel.cs" />
     <Compile Include="ViewModels\CurrentRates\SaveRateViewModel.cs" />
@@ -187,6 +189,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\Calculator\js\Calculator.js" />
     <Content Include="Scripts\CurrentRates\js\Rates.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -258,6 +261,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\CurrentRates\Index.cshtml" />
     <Content Include="Views\UserRates\Index.cshtml" />
+    <Content Include="Views\Calculator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

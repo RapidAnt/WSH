@@ -1,0 +1,45 @@
+﻿@model WebApp.ViewModels.Calculator.CalculatorViewModel
+
+<main>
+    <section class="row">
+        <h1>HUF -> @Model.Rate.Curr calculator</h1>
+    </section>
+
+    <div class="row justify-content-center">
+        <section class="col-md-4 col-sm-6">
+            <div class="card justify-content">
+                <div class="card-body">
+                    <div class="container">
+                        <table class="col-12">
+                            <tr>
+                                <td>Forint:</td>
+                                <td><input type="text" class="form-control" id="forint" name="forint"></td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Rate.Curr rate:</td>
+                                <td>
+                                    <div id="rate" data-rate="@Model.Rate.CurrentRate">@Model.Rate.CurrentRate</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Unit:</td>
+                                <td>
+                                    <div id="unit" data-unit="@Model.Rate.Unit">@Model.Rate.Unit</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="calculate()" on class="btn btn-primary col-sm-12">Calculate</button></td>
+                            </tr>
+                            <tr>
+                                <td><b>@Model.Rate.Curr Result</b></td>
+                                <td><b><div id="result"></div></b></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@Scripts.Render("~/calculator_js")

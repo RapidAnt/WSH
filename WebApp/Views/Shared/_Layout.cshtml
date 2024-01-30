@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>MNB Currency tracker</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -24,6 +24,7 @@
                         <li class="navbar-text">Welcome @HttpContext.Current.Session["UserName"] | </li>
                         <li>@Html.ActionLink("Current Rates", "Index", "CurrentRates", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Saved Rates", "Index", "UserRates", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Calculator", "Index", "Calculator", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                     else
