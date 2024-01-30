@@ -1,13 +1,12 @@
 ﻿using Data_Layer;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Application
 {
     public interface ILoginService
     {
-        bool CanLogIn(string email, string password);
-        User GetUserByEmail(string email);
-        User GetUserByEmailAndPassword(string email, string password);
-        List<User> GetAllUser();
+        Task<bool> CanLogIn(string email, string password);
+        Task<User> GetUserByEmail(string email);
+        Task<User> GetUserByEmailAndPassword(string email, string password);
     }
 }

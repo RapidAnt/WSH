@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using Application;
 using WebApp.ViewModels;
 
@@ -18,18 +19,18 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid || 
-                _loginService.GetUserByEmail(model.Email) != null ||
+                await _loginService.GetUserByEmail(model.Email) != null ||
                 model.Password != model.PasswordRepeated)
             {
                 return View("Index");
             }
 
-            var hash = _registrationService.GenerateHash(model.Password);
+            var hash = await _registrationService.GenerateHash(model.Password);
 
-            _registrationService.RegisterUser(model.UserName, model.Email, hash);
+            await _registrationService.RegisterUser(model.UserName, model.Email, hash);
 
             return RedirectToAction("Login", "Login");
         }

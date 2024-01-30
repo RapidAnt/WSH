@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Data_Layer;
 using Persistence;
 
@@ -21,35 +21,29 @@ namespace Application
             _unitOfWork = unitOfWork;
         }
 
-        public bool CanLogIn(string email, string password)
+        public async Task<bool> CanLogIn(string email, string password)
         {
-            string hash = _registrationService.GenerateHash(password);
+            string hash = await _registrationService.GenerateHash(password);
 
-            bool userFound = GetAllUser().Any(u => u.Email == email && u.Password == hash);
+            bool userFound = _unitOfWork.Users.Find(u => u.Email == email && u.Password == hash).Any();
 
             return userFound;
         }
 
-        public User GetUserByEmail(string email)
+        public async Task<User> GetUserByEmail(string email)
         {
-            User user = GetAllUser().FirstOrDefault(u => u.Email == email);
+            User user = _unitOfWork.Users.Find(u => u.Email == email).FirstOrDefault();
 
             return user;
         }
 
-        public User GetUserByEmailAndPassword(string email, string password)
+        public async Task<User> GetUserByEmailAndPassword(string email, string password)
         {
-            string hash = _registrationService.GenerateHash(password);
+            string hash = await _registrationService.GenerateHash(password);
 
-            User user = GetAllUser().FirstOrDefault(u => u.Email == email && u.Password == hash);
-            User user2 = _unitOfWork.Users.GetUserByEmailAndPassword(email, hash);
+            User user = _unitOfWork.Users.Find(u => u.Email == email && u.Password == hash).FirstOrDefault();
 
             return user;
-        }
-
-        public List<User> GetAllUser()
-        {
-            return _unitOfWork.Users.GetAll();
         }
     }
 }

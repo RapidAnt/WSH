@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Application.Interfaces;
 using Data_Layer;
 using Data_Layer.Models;
@@ -22,13 +23,13 @@ namespace Application
             _unitOfWork = unitOfWork;
         }
 
-        public void SaveUserRate(UserRate userRate)
+        public async Task SaveUserRate(UserRate userRate)
         {
             _unitOfWork.UserRates.Add(userRate);
             _unitOfWork.Save();
         }
 
-        public void DeleteUserRate(int userId, int userRateId)
+        public async Task DeleteUserRate(int userId, int userRateId)
         {
             UserRate userrate = _unitOfWork.UserRates.Find(rate => rate.UserId == userId && rate.Id == userRateId).FirstOrDefault();
             if (userrate != null)
@@ -38,7 +39,7 @@ namespace Application
             }
         }
 
-        public void UpdateCommentInUserRate(int userId, int userRateId, string comment)
+        public async Task UpdateCommentInUserRate(int userId, int userRateId, string comment)
         {
             UserRate userrate = _unitOfWork.UserRates.Find(rate => rate.UserId == userId && rate.Id == userRateId).FirstOrDefault();
 
@@ -49,7 +50,7 @@ namespace Application
             }
         }
 
-        public List<UserRate> GetRelatedUserRates(int userId)
+        public async Task<List<UserRate>> GetRelatedUserRates(int userId)
         {
             return _unitOfWork.UserRates.Find(userRate => userRate.UserId == userId);
         }

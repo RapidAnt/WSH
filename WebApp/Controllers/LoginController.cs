@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Web.Security;
 using Application;
 using Data_Layer;
@@ -19,13 +20,13 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginViewModel model)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (_loginService.CanLogIn(model.Email, model.Password))
+                if (await _loginService.CanLogIn(model.Email, model.Password))
                 {
-                    User user = _loginService.GetUserByEmailAndPassword(model.Email, model.Password);
+                    User user = await _loginService.GetUserByEmailAndPassword(model.Email, model.Password);
                     FormsAuthentication.SetAuthCookie(user.Email, false);
                     System.Web.HttpContext.Current.Session["UserName"] = user.UserName;
 

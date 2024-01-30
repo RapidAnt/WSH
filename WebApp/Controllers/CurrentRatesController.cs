@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application;
@@ -15,25 +16,25 @@ namespace WebApp.Controllers
         private readonly ILoginService _loginService = new LoginService();
         private readonly IUserRatesService _userRatesService = new UserRatesService();
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var currentExchangeRates = _mnbArfolyamService.GetCurrentExchangeRates();
+            var currentExchangeRates = await _mnbArfolyamService.GetCurrentExchangeRates();
             RatesViewModel viewModel = new RatesViewModel(currentExchangeRates);
 
             return View("Index", viewModel);
         }
 
         [HttpPost]
-        public ActionResult SaveRate(SaveRateViewModel rate)
+        public async Task<ActionResult> SaveRate(SaveRateViewModel rate)
         {
             if (!ModelState.IsValid)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
 
-            int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
+            int userId = (await _loginService.GetUserByEmail(User.Identity.Name)).Id;
             UserRate userRate = new UserRate(userId, DateTime.Now, rate.Unit, rate.Currency, rate.CurrentRate, HttpUtility.HtmlEncode(rate.Comment));
-            _userRatesService.SaveUserRate(userRate);
+            await _userRatesService.SaveUserRate(userRate);
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }

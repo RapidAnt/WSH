@@ -1,4 +1,5 @@
-﻿using Application.MNBArfolyamServiceSoapClient;
+﻿using System.Threading.Tasks;
+using Application.MNBArfolyamServiceSoapClient;
 using Data_Layer.DTO_Models;
 
 namespace Application
@@ -13,7 +14,7 @@ namespace Application
             _xmlConcerterService = new XmlConcerterService();
         }
 
-        public MnbExchangeRatesQueryValues GetInfo()
+        public async Task<MnbExchangeRatesQueryValues> GetInfo()
         {
             MnbExchangeRatesQueryValues result;
 
@@ -29,7 +30,7 @@ namespace Application
             return result;
         }
 
-        public MnbCurrencies GetCurrencies()
+        public async Task<MnbCurrencies> GetCurrencies()
         {
             MnbCurrencies result;
 
@@ -45,7 +46,7 @@ namespace Application
             return result;
         }
 
-        public MnbCurrencyUnits GetCurrencyUnits()
+        public async Task<MnbCurrencyUnits> GetCurrencyUnits()
         {
             MnbCurrencyUnits result;
 
@@ -64,7 +65,7 @@ namespace Application
             return result;
         }
 
-        public MnbCurrentExchangeRates GetCurrentExchangeRates()
+        public async Task<MnbCurrentExchangeRates> GetCurrentExchangeRates()
         {
             MnbCurrentExchangeRates result;
 
@@ -74,8 +75,7 @@ namespace Application
 
                 GetCurrentExchangeRatesResponseBody response = client.GetCurrentExchangeRates(request);
 
-                result = _xmlConcerterService.ConvertFrom<MnbCurrentExchangeRates>(response
-                    .GetCurrentExchangeRatesResult);
+                result = _xmlConcerterService.ConvertFrom<MnbCurrentExchangeRates>(response.GetCurrentExchangeRatesResult);
 
                 client.Close();
             }
@@ -83,7 +83,7 @@ namespace Application
             return result;
         }
 
-        public MnbStoredInterval GetDateInterval()
+        public async Task<MnbStoredInterval> GetDateInterval()
         {
             MnbStoredInterval result;
 
@@ -97,7 +97,7 @@ namespace Application
             return result;
         }
 
-        public MnbExchangeRates GetExchangeRates(string startDate, string endDate, string currencies)
+        public async Task<MnbExchangeRates> GetExchangeRates(string startDate, string endDate, string currencies)
         {
             MnbExchangeRates result;
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Application;
 using Application.Interfaces;
 using System.Web.Mvc;
@@ -13,34 +14,34 @@ namespace WebApp.Controllers
         private readonly ILoginService _loginService = new LoginService();
         private readonly IUserRatesService _userRatesService = new UserRatesService();
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
+            int userId = (await _loginService.GetUserByEmail(User.Identity.Name)).Id;
 
-            List<UserRate> userRates = _userRatesService.GetRelatedUserRates(userId);
+            List<UserRate> userRates = await _userRatesService.GetRelatedUserRates(userId);
             var viewModel = new UserRatesViewModel(userRates);
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult DeleteRate(int rateId)
+        public async Task<ActionResult> DeleteRate(int rateId)
         {
-            int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
+            int userId = (await _loginService.GetUserByEmail(User.Identity.Name)).Id;
 
-            _userRatesService.DeleteUserRate(userId, rateId);
+            await _userRatesService.DeleteUserRate(userId, rateId);
 
             // It would be better to return the status code and refresh only the UI
             return Json(Url.Action("Index"));
         }
 
         [HttpPost]
-        public ActionResult UpdateRateComment(UserRateUpdateVivewModel model)
+        public async Task<ActionResult> UpdateRateComment(UserRateUpdateVivewModel model)
         {
             if (ModelState.IsValid)
             {
-                int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
-                _userRatesService.UpdateCommentInUserRate(userId, model.Id, model.Comment);
+                int userId = (await _loginService.GetUserByEmail(User.Identity.Name)).Id;
+                await _userRatesService.UpdateCommentInUserRate(userId, model.Id, model.Comment);
             }
 
             // It would be better to return the status code and refresh only the UI

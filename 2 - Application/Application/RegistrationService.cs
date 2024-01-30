@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Data_Layer;
 using Persistence;
 
@@ -21,13 +22,13 @@ namespace Application
             _unitOfWork = unitOfWork;
         }
 
-        public void RegisterUser(string userName, string email, string password)
+        public async Task RegisterUser(string userName, string email, string password)
         {
             _unitOfWork.Users.Add(new User(userName, email, password));
             _unitOfWork.Save();
         }
 
-        public string GenerateHash(string password)
+        public async Task<string> GenerateHash(string password)
         {
             string hash = String.Empty;
             string salt = "The salt could be come from the DB as well as the part of an user data.";
