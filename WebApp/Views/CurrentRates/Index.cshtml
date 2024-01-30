@@ -6,14 +6,13 @@
             SaveRate: "@Url.Action("SaveRate", "CurrentRates")"
         };
 </script>
-@Scripts.Render("~/content_evaluations_js")
 
 <main>
     <section class="row">
         <h1>Current Rates</h1>
     </section>
     <section class="row justify-content-center">
-        <div class="card  col-sm-8">
+        <div class="card col-sm-8">
             <div class="card-body">
                 The current rates are the followings on @Model.Date :<p>
                     <table id="currencyTable" class="table table-striped table-hover table-bordered text-center">
@@ -30,11 +29,11 @@
                             @{
                                 foreach (var rate in Model.Rates)
                                 {
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td>@rate.Curr</td>
                                         <td>@rate.Unit</td>
                                         <td>@rate.CurrentRate</td>
-                                        <td><input type="text" id="comment"></td>
+                                        <td><input class="form-control" type="text" id="comment"></td>
                                         <td>
                                             <button type="button" class="btn btn-primary" id="save-currency"
                                                     data-currency="@rate.Curr"
@@ -53,4 +52,4 @@
     </section>
 </main>
 
-@Scripts.Render("~/content_rates_js")
+@Scripts.Render("~/current_rates_js")

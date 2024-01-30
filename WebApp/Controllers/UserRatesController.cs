@@ -22,5 +22,29 @@ namespace WebApp.Controllers
 
             return View(viewModel);
         }
+
+        [HttpPost]
+        public ActionResult DeleteRate(int rateId)
+        {
+            int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
+
+            _userRatesService.DeleteUserRate(userId, rateId);
+
+            // It would be better to return the status code and refresh only the UI
+            return Json(Url.Action("Index"));
+        }
+
+        [HttpPost]
+        public ActionResult UpdateRateComment(UserRateUpdateVivewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = _loginService.GetUserByEmail(User.Identity.Name).Id;
+                _userRatesService.UpdateCommentInUserRate(userId, model.Id, model.Comment);
+            }
+
+            // It would be better to return the status code and refresh only the UI
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
     }
 }

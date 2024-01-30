@@ -7,5 +7,7 @@ namespace Application.Interfaces
     {
         void SaveUserRate(UserRate userRate);
         List<UserRate> GetRelatedUserRates(int userId);
+        void DeleteUserRate(int userId, int userRateId);
+        void UpdateCommentInUserRate(int userId, int userRateId, string comment);
     }
 }

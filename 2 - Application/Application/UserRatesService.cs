@@ -7,7 +7,7 @@ using Persistence;
 
 namespace Application
 {
-    public class UserRatesService: IUserRatesService
+    public class UserRatesService : IUserRatesService
     {
         private readonly UnitOfWork _unitOfWork;
 
@@ -26,6 +26,27 @@ namespace Application
         {
             _unitOfWork.UserRates.Add(userRate);
             _unitOfWork.Save();
+        }
+
+        public void DeleteUserRate(int userId, int userRateId)
+        {
+            UserRate userrate = _unitOfWork.UserRates.Find(rate => rate.UserId == userId && rate.Id == userRateId).FirstOrDefault();
+            if (userrate != null)
+            {
+                _unitOfWork.UserRates.Remove(userrate);
+                _unitOfWork.Save();
+            }
+        }
+
+        public void UpdateCommentInUserRate(int userId, int userRateId, string comment)
+        {
+            UserRate userrate = _unitOfWork.UserRates.Find(rate => rate.UserId == userId && rate.Id == userRateId).FirstOrDefault();
+
+            if (userrate != null)
+            {
+                userrate.Comment = comment;
+                _unitOfWork.Save();
+            }
         }
 
         public List<UserRate> GetRelatedUserRates(int userId)

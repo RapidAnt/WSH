@@ -28,10 +28,12 @@ namespace WebApp
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/dataTables.bootstrap.min.css"));
-            
 
-            bundles.Add(new ScriptBundle("~/content_rates_js").Include(
-                "~/Content/CurrentRates/js/rates.js"));
+            bundles.Add(new ScriptBundle("~/current_rates_js").Include(
+                "~/Scripts/CurrentRates/js/Rates.js"));
+
+            bundles.Add(new ScriptBundle("~/user_rates_js").Include(
+                "~/Scripts/UserRates/js/UserRates.js"));
         }
     }
 }

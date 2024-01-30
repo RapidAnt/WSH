@@ -25,6 +25,11 @@ namespace Persistence
             _context.Set<T>().Add(item);
         }
 
+        public void Remove(T item)
+        {
+            _context.Set<T>().Remove(item);
+        }
+
         public List<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _context.Set<T>().Where(predicate).ToList() ?? new List<T>();
